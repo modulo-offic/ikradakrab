@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Акции на морепродукты - скидки на красную икру, крабов и рыбу - IkraDaKrab</title>
+  <meta name="description" content="Актуальные акции и специальные предложения на морепродукты премиум класса. Выгодные скидки на красную икру, крабов, креветки и рыбу" />
+  <meta name="theme-color" content="#0b0f14" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+:root{
+  --bg0:#070A0E;
+  --bg1:#0B0F14;
+  --bg2:#0F1722;
+  --card: rgba(255,255,255,.06);
+  --card2: rgba(255,255,255,.08);
+  --stroke: rgba(255,255,255,.10);
+  --stroke2: rgba(255,255,255,.14);
+  --text:#EAF0F8;
+  --muted: rgba(234,240,248,.72);
+  --muted2: rgba(234,240,248,.55);
+  --accent:#E53954; 
+  --accent2:#FF7A90;
+  --good:#48E0A5;
+  --shadow: 0 22px 60px rgba(0,0,0,.55);
+  --radius: 18px;
+  --radius2: 26px;
+  --container: 1200px;
+  --ease: cubic-bezier(.2,.9,.2,1);
+}
+
+html,body{
+  margin:0;
+  color:var(--text);
+  background:linear-gradient(180deg,var(--bg0),var(--bg1) 40%,var(--bg2));
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";
+  position:fixed; inset:-40vh -30vw;
+  background:
+    radial-gradient(60vw 60vw at 10% 10%, rgba(229,57,84,.16), transparent 60%),
+    radial-gradient(50vw 50vw at 80% 20%, rgba(255,122,144,.10), transparent 60%),
+    radial-gradient(70vw 70vw at 40% 90%, rgba(72,224,165,.08), transparent 62%);
+  pointer-events:none;
+  z-index:-2;
+  filter: blur(10px);
+}
+body::after{
+  content:"";
+  position:fixed; inset:0;
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.35));
+  pointer-events:none;
+  z-index:-1;
+}
+*{box-sizing:border-box}
+a{color:inherit; text-decoration:none}
+img{max-width:100%; display:block}
+
+.container{max-width:var(--container); margin:0 auto; padding:0 20px}
+.h1{font-size: clamp(34px, 4vw, 56px); line-height:1.03; margin:0 0 14px; letter-spacing:-.02em; font-weight:700}
+.h2{font-size: clamp(26px, 2.4vw, 36px); line-height:1.15; margin:0 0 8px; letter-spacing:-.02em; font-weight:600}
+.lead{font-size: 16px; line-height:1.6; color:var(--muted); margin:0 0 22px; max-width: 58ch}
+
+.topbar{
+  position: sticky; top:0; z-index:50;
+  background: rgba(7,10,14,.85);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  backdrop-filter: blur(14px);
+}
+.topbar__inner{
+  height:72px;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+}
+.brand{display:flex; align-items:center; gap:12px; font-weight:600}
+.brand__mark{
+  width:38px; height:38px; border-radius:12px;
+  background:
+    radial-gradient(14px 14px at 30% 30%, rgba(255,255,255,.55), transparent 45%),
+    radial-gradient(18px 18px at 70% 70%, rgba(255,255,255,.18), transparent 55%),
+    linear-gradient(135deg, rgba(229,57,84,.95), rgba(255,122,144,.35));
+  box-shadow: 0 18px 44px rgba(229,57,84,.24);
+  border:1px solid rgba(255,255,255,.12);
+}
+.brand__text{display:flex; flex-direction:column}
+.brand__name{font-weight:800; letter-spacing:-.02em}
+.brand__tag{font-size:12px; color: rgba(234,240,248,.62); margin-top:2px}
+
+.nav{display:flex; gap:18px; align-items:center}
+.nav__link{
+  font-size:14px; color: rgba(234,240,248,.72);
+  padding:10px 10px; border-radius:999px;
+  transition: background .2s var(--ease), color .2s var(--ease);
+}
+.nav__link:hover, .nav__link--active{
+  background: rgba(255,255,255,.06);
+  color: var(--text);
+}
+
+.topbar__right{display:flex; align-items:center; gap:16px}
+.phone{
+  font-size:14px; font-weight:500;
+  color: rgba(234,240,248,.82);
+  padding:10px 16px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  transition: all .2s var(--ease);
+}
+.phone:hover{
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.18);
+}
+.soc{
+  font-size:13px; color: rgba(234,240,248,.72);
+  padding:8px 12px;
+}
+
+.page-hero{
+  padding:100px 0 60px;
+  text-align:center;
+}
+
+.section{padding: 72px 0}
+.section__head{margin-bottom:32px; text-align:center}
+
+.promo-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap:24px;
+}
+
+.promo{
+  background: var(--card);
+  border:1px solid var(--stroke);
+  border-radius:var(--radius2);
+  overflow:hidden;
+  transition: all .3s var(--ease);
+  position:relative;
+}
+.promo:hover{
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: var(--stroke2);
+}
+.promo__badge{
+  position:absolute;
+  top:20px; right:20px;
+  padding:8px 16px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color:#fff;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:700;
+  z-index:2;
+  box-shadow: 0 8px 20px rgba(229,57,84,.35);
+}
+.promo__img{
+  width:100%;
+  aspect-ratio: 16/10;
+  object-fit:cover;
+}
+.promo__body{
+  padding:24px;
+}
+.promo__title{
+  font-size:22px;
+  font-weight:600;
+  margin-bottom:12px;
+  color: var(--text);
+}
+.promo__desc{
+  font-size:14px;
+  color: var(--muted);
+  line-height:1.6;
+  margin-bottom:16px;
+}
+.promo__price{
+  display:flex;
+  align-items:baseline;
+  gap:12px;
+  margin-bottom:20px;
+}
+.promo__price-old{
+  font-size:18px;
+  color: var(--muted2);
+  text-decoration: line-through;
+}
+.promo__price-new{
+  font-size:28px;
+  font-weight:700;
+  color: var(--good);
+}
+.promo__cta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  padding:14px 28px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:600;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+  border:0;
+  cursor:pointer;
+  transition: all .25s var(--ease);
+  box-shadow: 0 12px 28px rgba(229,57,84,.35);
+}
+.promo__cta:hover{
+  box-shadow: 0 16px 38px rgba(229,57,84,.45);
+  transform: translateY(-2px);
+}
+
+.footer{
+  padding:60px 0 40px;
+  border-top:1px solid var(--stroke);
+  margin-top:80px;
+}
+.footer__grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap:40px;
+}
+.footer__col h3{
+  font-size:16px;
+  margin-bottom:16px;
+  color: var(--text);
+}
+.footer__col a{
+  display:block;
+  padding:8px 0;
+  font-size:14px;
+  color: var(--muted);
+}
+.footer__col a:hover{
+  color: var(--text);
+}
+.footer__bottom{
+  margin-top:40px;
+  padding-top:20px;
+  border-top:1px solid var(--stroke);
+  text-align:center;
+  font-size:13px;
+  color: var(--muted2);
+}
+
+@media (max-width: 760px){
+  .nav{display:none}
+  .topbar__right .phone{display:none}
+  .promo-grid{grid-template-columns:1fr}
+}
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark"></span>
+      <span class="brand__text">
+        <span class="brand__name">IkraDaKrab</span>
+        <span class="brand__tag">морепродукты премиум‑класса</span>
+      </span>
+    </a>
+
+    <nav class="nav">
+      <a class="nav__link" href="index.html">Главная</a>
+      <a class="nav__link nav__link--active" href="action.html">Акции</a>
+      <a class="nav__link" href="catalog.html">Каталог</a>
+      <a class="nav__link" href="recipes.html">Рецепты</a>
+    </nav>
+
+    <div class="topbar__right">
+      <a class="phone" href="tel:+79923116970">+7 (992) 311-69-70</a>
+      <a class="soc" href="https://t.me/ikraDAkrab" target="_blank">Telegram</a>
+      <a class="soc" href="https://vk.com/ikradacrab" target="_blank">VK</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="h1">Актуальные акции и специальные предложения</h1>
+      <p class="lead" style="max-width:none">Выгодные предложения на морепродукты премиум-класса. Успейте воспользоваться нашими акциями!</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="promo-grid">
+        
+        <div class="promo">
+          <span class="promo__badge">-25%</span>
+          <img class="promo__img" src="https://optim.tildacdn.com/tild6166-3737-4037-b161-613165616261/-/cover/600x600/center/center/-/format/webp/IMG_9231.PNG.webp" alt="Красная икра">
+          <div class="promo__body">
+            <h3 class="promo__title">Красная икра горбуши</h3>
+            <p class="promo__desc">Икра горбуши премиум качества. Зернистая, с насыщенным вкусом. Идеально подходит для праздничного стола.</p>
+            <div class="promo__price">
+              <span class="promo__price-old">3 200 ₽</span>
+              <span class="promo__price-new">2 400 ₽</span>
+            </div>
+            <button class="promo__cta">Заказать со скидкой</button>
+          </div>
+        </div>
+
+        <div class="promo">
+          <span class="promo__badge">-30%</span>
+          <img class="promo__img" src="https://static.tildacdn.com/tild6336-3836-4366-b631-313530623364/DSC_8339.jpg" alt="Камчатский краб">
+          <div class="promo__body">
+            <h3 class="promo__title">Камчатский краб</h3>
+            <p class="promo__desc">Свежемороженый камчатский краб высшего качества. Нежное мясо с деликатным вкусом.</p>
+            <div class="promo__price">
+              <span class="promo__price-old">8 500 ₽</span>
+              <span class="promo__price-new">5 950 ₽</span>
+            </div>
+            <button class="promo__cta">Заказать со скидкой</button>
+          </div>
+        </div>
+
+        <div class="promo">
+          <span class="promo__badge">-20%</span>
+          <img class="promo__img" src="https://static.tildacdn.com/tild6539-3835-4833-a339-323061383964/DSC_8404.jpg" alt="Королевские креветки">
+          <div class="promo__body">
+            <h3 class="promo__title">Королевские креветки</h3>
+            <p class="promo__desc">Крупные креветки премиум качества. Идеальны для гриля и праздничных блюд.</p>
+            <div class="promo__price">
+              <span class="promo__price-old">2 500 ₽</span>
+              <span class="promo__price-new">2 000 ₽</span>
+            </div>
+            <button class="promo__cta">Заказать со скидкой</button>
+          </div>
+        </div>
+
+        <div class="promo">
+          <span class="promo__badge">-15%</span>
+          <img class="promo__img" src="https://static.tildacdn.com/tild3535-3162-4432-b465-386666393533/DSC_8432.jpg" alt="Мидии">
+          <div class="promo__body">
+            <h3 class="promo__title">Мидии в створках</h3>
+            <p class="promo__desc">Крупные мидии в створках. Отлично подходят для запекания с сыром и чесноком.</p>
+            <div class="promo__price">
+              <span class="promo__price-old">1 200 ₽</span>
+              <span class="promo__price-new">1 020 ₽</span>
+            </div>
+            <button class="promo__cta">Заказать со скидкой</button>
+          </div>
+        </div>
+
+        <div class="promo">
+          <span class="promo__badge">-20%</span>
+          <img class="promo__img" src="https://static.tildacdn.com/tild3637-3932-4464-a537-626134313533/DSC_8390.jpg" alt="Стейки лосося">
+          <div class="promo__body">
+            <h3 class="promo__title">Стейки лосося</h3>
+            <p class="promo__desc">Охлажденные стейки норвежского лосося. Сочное и нежное мясо с богатым вкусом.</p>
+            <div class="promo__price">
+              <span class="promo__price-old">1 800 ₽</span>
+              <span class="promo__price-new">1 440 ₽</span>
+            </div>
+            <button class="promo__cta">Заказать со скидкой</button>
+          </div>
+        </div>
+
+        <div class="promo">
+          <span class="promo__badge">-35%</span>
+          <img class="promo__img" src="https://static.tildacdn.com/tild3530-6165-4061-b164-663335643130/Frame_2131329383.png" alt="Черная икра">
+          <div class="promo__body">
+            <h3 class="promo__title">Осетровая икра</h3>
+            <p class="promo__desc">Черная икра осетра. Роскошный деликатес для истинных ценителей.</p>
+            <div class="promo__price">
+              <span class="promo__price-old">15 000 ₽</span>
+              <span class="promo__price-new">9 750 ₽</span>
+            </div>
+            <button class="promo__cta">Заказать со скидкой</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container" style="text-align:center">
+      <div style="background:var(--card); border:1px solid var(--stroke); border-radius:var(--radius2); padding:40px; max-width:700px; margin:0 auto">
+        <h2 class="h2">Как воспользоваться акцией?</h2>
+        <p class="lead" style="max-width:none">Просто свяжитесь с нами по телефону <a href="tel:+79923116970" style="color:var(--accent2); font-weight:600">+7 (992) 311-69-70</a> или через наши соцсети и укажите интересующий товар. Наши менеджеры оформят заказ со скидкой!</p>
+        <p style="font-size:14px; color:var(--muted2); margin-top:20px">* Акции действуют при наличии товара на складе. Количество товара по акции ограничено.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <h3>Навигация</h3>
+        <a href="index.html">Главная</a>
+        <a href="action.html">Акции</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="recipes.html">Рецепты</a>
+      </div>
+      <div class="footer__col">
+        <h3>Города</h3>
+        <a href="catalog-tyumen.html">Тюмень</a>
+        <a href="catalog-nu.html">Новый Уренгой</a>
+        <a href="catalog-nadym.html">Надым</a>
+      </div>
+      <div class="footer__col">
+        <h3>Контакты</h3>
+        <a href="tel:+79923116970">+7 (992) 311-69-70</a>
+        <a href="https://t.me/ikraDAkrab" target="_blank">Telegram</a>
+        <a href="https://vk.com/ikradacrab" target="_blank">VK</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2024 IkraDaKrab. Все права защищены.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

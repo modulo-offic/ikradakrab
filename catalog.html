@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Каталог морепродуктов | IkraDaKrab</title>
+<meta name="description" content="Полный каталог морепродуктов премиум класса"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>:root{--bg0:#070A0E;--bg1:#0B0F14;--bg2:#0F1722;--card:rgba(255,255,255,.06);--stroke:rgba(255,255,255,.10);--text:#EAF0F8;--muted:rgba(234,240,248,.72);--accent:#E53954;--accent2:#FF7A90;--radius:18px;--container:1200px;--ease:cubic-bezier(.2,.9,.2,1)}*{box-sizing:border-box;margin:0;padding:0}html,body{color:var(--text);background:linear-gradient(180deg,var(--bg0),var(--bg1) 40%,var(--bg2));font-family:Inter,sans-serif;-webkit-font-smoothing:antialiased}body::before{content:"";position:fixed;inset:-40vh -30vw;background:radial-gradient(60vw 60vw at 10% 10%,rgba(229,57,84,.16),transparent 60%),radial-gradient(50vw 50vw at 80% 20%,rgba(255,122,144,.10),transparent 60%);pointer-events:none;z-index:-2;filter:blur(10px)}body::after{content:"";position:fixed;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.35));pointer-events:none;z-index:-1}a{color:inherit;text-decoration:none}.container{max-width:var(--container);margin:0 auto;padding:0 20px}.h1{font-size:clamp(34px,4vw,56px);line-height:1.03;margin:0 0 14px;font-weight:700}.topbar{position:sticky;top:0;z-index:50;background:rgba(7,10,14,.85);border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(14px)}.topbar__inner{height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:12px}.brand__mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,rgba(229,57,84,.95),rgba(255,122,144,.35));box-shadow:0 18px 44px rgba(229,57,84,.24)}.brand__name{font-weight:800}.nav{display:flex;gap:18px}.nav__link{font-size:14px;padding:10px;border-radius:999px;transition:all .2s}.nav__link:hover{background:rgba(255,255,255,.06)}.page-hero{padding:100px 0 60px;text-align:center}.section{padding:72px 0}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}.card{background:var(--card);border:1px solid var(--stroke);border-radius:var(--radius);padding:20px;transition:all .3s}.card:hover{transform:translateY(-4px)}.card__img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;margin-bottom:16px}.card__title{font-size:18px;font-weight:600;margin-bottom:8px}.card__desc{font-size:14px;color:var(--muted)}.footer{padding:60px 0 40px;border-top:1px solid var(--stroke);margin-top:80px}.footer__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px}.footer__col h3{margin-bottom:16px}.footer__col a{display:block;padding:8px 0;font-size:14px;color:var(--muted)}.footer__bottom{margin-top:40px;padding-top:20px;border-top:1px solid var(--stroke);text-align:center;font-size:13px;color:var(--muted)}@media(max-width:760px){.nav{display:none}}</style>
+</head>
+<body>
+<header class="topbar">
+<div class="container topbar__inner">
+<a class="brand" href="index.html">
+<span class="brand__mark"></span>
+<span class="brand__name">IkraDaKrab</span>
+</a>
+<nav class="nav">
+<a class="nav__link" href="index.html">Главная</a>
+<a class="nav__link" href="action.html">Акции</a>
+<a class="nav__link" href="catalog.html">Каталог</a>
+<a class="nav__link" href="recipes.html">Рецепты</a>
+</nav>
+</div>
+</header>
+
+<main>
+<section class="page-hero">
+<div class="container">
+<h1 class="h1">Каталог морепродуктов</h1>
+<p style="font-size:16px;color:var(--muted)">Выберите ваш город для просмотра доступных товаров</p>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<div class="grid">
+<a href="catalog-tyumen.html" class="card">
+<img class="card__img" src="https://static.tildacdn.com/tild6537-3937-4835-a164-393663316539/DSC_8518.jpg" alt="Тюмень">
+<h3 class="card__title">Тюмень</h3>
+<p class="card__desc">Смотреть каталог товаров</p>
+</a>
+<a href="catalog-nu.html" class="card">
+<img class="card__img" src="https://static.tildacdn.com/tild6336-3836-4366-b631-313530623364/DSC_8339.jpg" alt="Новый Уренгой">
+<h3 class="card__title">Новый Уренгой</h3>
+<p class="card__desc">Смотреть каталог товаров</p>
+</a>
+<a href="catalog-nadym.html" class="card">
+<img class="card__img" src="https://static.tildacdn.com/tild6539-3835-4833-a339-323061383964/DSC_8404.jpg" alt="Надым">
+<h3 class="card__title">Надым</h3>
+<p class="card__desc">Смотреть каталог товаров</p>
+</a>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="footer">
+<div class="container">
+<div class="footer__grid">
+<div class="footer__col">
+<h3>Навигация</h3>
+<a href="index.html">Главная</a>
+<a href="action.html">Акции</a>
+<a href="recipes.html">Рецепты</a>
+</div>
+<div class="footer__col">
+<h3>Контакты</h3>
+<a href="tel:+79923116970">+7 (992) 311-69-70</a>
+<a href="https://t.me/ikraDAkrab">Telegram</a>
+<a href="https://vk.com/ikradacrab">VK</a>
+</div>
+</div>
+<div class="footer__bottom">
+<p>© 2024 IkraDaKrab</p>
+</div>
+</div>
+</footer>
+</body>
+</html>
