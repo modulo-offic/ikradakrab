@@ -3,13 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Акции на морепродукты - скидки на красную икру, крабов и рыбу - IkraDaKrab</title>
-  <meta name="description" content="Актуальные акции и специальные предложения на морепродукты премиум класса. Выгодные скидки на красную икру, крабов, креветки и рыбу" />
+  <title>Акции на морепродукты – скидки на красную икру, крабов и рыбу | IkraDaKrab</title>
+  <meta name="description" content="Свежие акции и товары недели в IkraDaKrab: скидки на красную и черную икру, крабов, креветки, рыбу и другие морепродукты премиум-класса. Выгодные предложения в Тюмени, Новом Уренгое и Надыме, доставка и самовывоз" />
   <meta name="theme-color" content="#0b0f14" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-:root{
+  <style>:root{
   --bg0:#070A0E;
   --bg1:#0B0F14;
   --bg2:#0F1722;
@@ -30,11 +29,13 @@
   --ease: cubic-bezier(.2,.9,.2,1);
 }
 
-html,body{
+
+html,
+body{
   margin:0;
   color:var(--text);
   background:linear-gradient(180deg,var(--bg0),var(--bg1) 40%,var(--bg2));
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, "Noto Sans", sans-serif;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   overflow-x:hidden;
@@ -58,18 +59,80 @@ body::after{
   pointer-events:none;
   z-index:-1;
 }
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:grid;
+  place-items:center;
+}
+
+.modal__panel{
+  position:relative;
+  z-index:1;              /* выше backdrop */
+}
+.backdrop{
+  position:absolute;
+  inset:0;
+  background: rgba(2,6,10,.62);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 0;
+}
+.hidden{display:none !important;}
+
 *{box-sizing:border-box}
+html,
+body{
+  margin:0;
+  font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background:
+    radial-gradient(1200px 600px at 20% -10%, rgba(229,57,84,.22), transparent 55%),
+    radial-gradient(900px 500px at 100% 0%, rgba(106,217,255,.14), transparent 55%),
+    radial-gradient(900px 700px at 40% 120%, rgba(72,224,165,.10), transparent 55%),
+    linear-gradient(180deg, var(--bg0), var(--bg1) 40%, var(--bg0));
+  color:var(--text);
+  overflow-x:hidden;
+}
+
 a{color:inherit; text-decoration:none}
+a:hover{color:var(--text)}
 img{max-width:100%; display:block}
 
 .container{max-width:var(--container); margin:0 auto; padding:0 20px}
-.h1{font-size: clamp(34px, 4vw, 56px); line-height:1.03; margin:0 0 14px; letter-spacing:-.02em; font-weight:700}
-.h2{font-size: clamp(26px, 2.4vw, 36px); line-height:1.15; margin:0 0 8px; letter-spacing:-.02em; font-weight:600}
+.skip{
+  position:absolute; left:16px; top:12px; transform: translateY(-140%);
+  padding:10px 12px; border-radius:999px; background:#fff; color:#000;
+  z-index:9999; transition: transform .25s var(--ease);
+}
+.skip:focus{transform: translateY(0)}
+
+.h1{font-size: clamp(34px, 4vw, 56px); line-height:1.03; margin:0 0 14px; letter-spacing:-.02em}
+.h2{font-size: clamp(26px, 2.4vw, 36px); line-height:1.15; margin:0 0 8px; letter-spacing:-.02em}
 .lead{font-size: 16px; line-height:1.6; color:var(--muted); margin:0 0 22px; max-width: 58ch}
+.muted{color:var(--muted)}
+.eyebrow{
+  display:inline-flex; gap:10px; align-items:center;
+  font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+  color: rgba(234,240,248,.68);
+  padding:8px 12px;
+  border-radius:999px;
+  background: rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.10);
+  margin-bottom: 14px;
+}
+
+.section{padding: 72px 0}
+.section--tight{padding: 54px 0}
+.section__head{margin-bottom: 22px}
+.section__head--row{display:flex; align-items:flex-end; justify-content:space-between; gap:18px}
+@media (max-width: 760px){
+  .section__head--row{flex-direction:column; align-items:flex-start}
+}
 
 .topbar{
   position: sticky; top:0; z-index:50;
-  background: rgba(7,10,14,.85);
+  background: rgba(7,10,14,.62);
   border-bottom:1px solid rgba(255,255,255,.08);
   backdrop-filter: blur(14px);
 }
@@ -77,7 +140,7 @@ img{max-width:100%; display:block}
   height:72px;
   display:flex; align-items:center; justify-content:space-between; gap:16px;
 }
-.brand{display:flex; align-items:center; gap:12px; font-weight:600}
+.brand{display:flex; align-items:center; gap:12px}
 .brand__mark{
   width:38px; height:38px; border-radius:12px;
   background:
@@ -87,9 +150,8 @@ img{max-width:100%; display:block}
   box-shadow: 0 18px 44px rgba(229,57,84,.24);
   border:1px solid rgba(255,255,255,.12);
 }
-.brand__text{display:flex; flex-direction:column}
 .brand__name{font-weight:800; letter-spacing:-.02em}
-.brand__tag{font-size:12px; color: rgba(234,240,248,.62); margin-top:2px}
+.brand__tag{display:block; font-size:12px; color: rgba(234,240,248,.62); margin-top:2px}
 
 .nav{display:flex; gap:18px; align-items:center}
 .nav__link{
@@ -97,331 +159,1048 @@ img{max-width:100%; display:block}
   padding:10px 10px; border-radius:999px;
   transition: background .2s var(--ease), color .2s var(--ease);
 }
-.nav__link:hover, .nav__link--active{
-  background: rgba(255,255,255,.06);
+.nav__link:hover{background: rgba(255,255,255,.06); color:var(--text)}
+
+.nav__link--active{
+  background: rgba(229,57,84,.16);
+  border: 1px solid rgba(229,57,84,.22);
   color: var(--text);
 }
 
-.topbar__right{display:flex; align-items:center; gap:16px}
-.phone{
-  font-size:14px; font-weight:500;
-  color: rgba(234,240,248,.82);
-  padding:10px 16px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.12);
-  transition: all .2s var(--ease);
-}
-.phone:hover{
-  background: rgba(255,255,255,.06);
-  border-color: rgba(255,255,255,.18);
-}
+.topbar__soc{display:flex; align-items:center; gap:10px}
 .soc{
-  font-size:13px; color: rgba(234,240,248,.72);
-  padding:8px 12px;
+  font-size:13px;
+  color: rgba(234,240,248,.72);
+  padding: 8px 10px;
+  border-radius:999px;
+  background: rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+}
+.soc:hover{background: rgba(255,255,255,.05); color: var(--text)}
+
+.no-scroll{overflow:hidden}
+
+.mobile{display:none}
+@media (max-width: 980px){
+  .topbar__soc{display:none}
+  .mobile{
+    display:block;
+    max-height:0;
+    overflow:hidden;
+    transition: max-height .25s var(--ease);
+  }
+  .mobile--open{max-height: 620px}
+  .mobile__group{margin-top:6px}
+  .mobile__title{font-size:12px; color: rgba(234,240,248,.55); padding: 2px 6px}
+  .mobile__soc{display:flex; gap:10px; flex-wrap:wrap}
 }
 
-.page-hero{
-  padding:100px 0 60px;
-  text-align:center;
+@media (max-width: 980px){ .nav{display:none} }
+
+.topbar__right{display:flex; align-items:center; gap:12px}
+.phone{
+  font-size:14px; color: rgba(234,240,248,.78);
+  padding:10px 12px; border-radius:999px;
+  background: rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
 }
+@media (max-width: 980px){ .phone{display:none} }
 
-.section{padding: 72px 0}
-.section__head{margin-bottom:32px; text-align:center}
+.burger{
+  display:none;
+  width:42px; height:42px; border-radius:14px;
+  background: rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.10);
+  color:inherit;
+}
+.burger span{display:block; height:2px; margin:6px 10px; background: rgba(234,240,248,.9); border-radius:2px}
+@media (max-width: 980px){ .burger{display:inline-block} }
 
-.promo-grid{
+.mobile{
+  border-top:1px solid rgba(255,255,255,.08);
+  background: rgba(7,10,14,.82);
+  backdrop-filter: blur(14px);
+}
+.mobile__inner{padding: 14px 0 18px; display:grid; gap:10px}
+.mobile__link{padding:12px 14px; border-radius:14px; background: rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); color: rgba(234,240,248,.82)}
+.mobile__cta{width:100%; justify-content:center}
+
+.hero{position:relative; padding: 44px 0 34px}
+.hero__bg{
+  position:absolute; inset:-120px -120px -120px -120px;
+  background:
+    radial-gradient(1000px 420px at 18% 15%, rgba(229,57,84,.30), transparent 60%),
+    radial-gradient(900px 520px at 90% 15%, rgba(106,217,255,.20), transparent 62%),
+    radial-gradient(800px 520px at 50% 115%, rgba(72,224,165,.14), transparent 62%);
+  filter: blur(0px);
+  pointer-events:none;
+}
+.hero__grid{
+  position:relative;
+  display:grid; grid-template-columns: 1.05fr .95fr;
+  gap: 28px;
+  align-items: stretch;
+}
+@media (max-width: 980px){
+  .hero__grid{grid-template-columns:1fr; gap:18px}
+}
+.hero__copy{
+  padding: 18px;
+  border-radius: var(--radius2);
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow: var(--shadow);
+}
+.hero__actions{display:flex; gap:10px; flex-wrap:wrap; margin: 10px 0 10px}
+.trustbar{
+  margin-top: 16px;
+  display:grid; grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 10px;
+}
+@media (max-width: 760px){ .trustbar{grid-template-columns:1fr} }
+.trustbar__item{
+  padding: 12px 12px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+}
+.trustbar__k{font-size:13px; font-weight:700}
+.trustbar__v{font-size:12px; color: var(--muted2); margin-top:2px}
+
+.hero__bento{
   display:grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap:24px;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 150px;
+  gap: 12px;
+}
+@media (max-width: 980px){
+  .hero__bento{grid-auto-rows: 140px}
+}
+.bento{
+  position:relative;
+  overflow:hidden;
+  border-radius: var(--radius2);
+  background: rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow: 0 18px 46px rgba(0,0,0,.45);
+}
+.bento--tall{grid-row: span 2}
+.bento--wide{grid-column: span 2}
+.bento__media{position:absolute; inset:0}
+.bento__cap{
+  position:absolute; inset:auto 14px 14px 14px;
+  display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
+  padding: 10px 12px;
+  border-radius: 18px;
+  background: rgba(7,10,14,.62);
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter: blur(10px);
+}
+.bento__title{font-weight:800; letter-spacing:-.01em}
+.bento__sub{font-size:12px; color: rgba(234,240,248,.72)}
+
+.section__head p{max-width: 70ch}
+
+.cats{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 12px;
+}
+@media (max-width: 980px){ .cats{grid-template-columns: repeat(2, minmax(0,1fr))} }
+@media (max-width: 520px){ .cats{grid-template-columns: 1fr} }
+
+.steps{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap:12px;
+}
+@media (max-width: 980px){ .steps{grid-template-columns: 1fr} }
+
+.cities{
+  margin-top: 14px;
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 12px;
+}
+@media (max-width: 980px){ .cities{grid-template-columns:1fr} }
+
+.recipes{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 12px;
+}
+@media (max-width: 980px){ .recipes{grid-template-columns:1fr} }
+
+.footer{padding: 42px 0 26px; border-top:1px solid rgba(255,255,255,.08); background: rgba(7,10,14,.55)}
+.footer__grid{display:grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 18px}
+@media (max-width: 980px){ .footer__grid{grid-template-columns:1fr} }
+.footer__brand{font-weight:900; letter-spacing:-.02em}
+.footer__title{font-weight:800; margin-bottom: 10px}
+.footer__link{display:block; color: rgba(234,240,248,.78); padding: 6px 0}
+.footer__muted{color: rgba(234,240,248,.60); font-size:13px; line-height:1.5}
+.footer__bottom{margin-top: 18px; display:flex; gap:10px; flex-wrap:wrap; align-items:center; color: rgba(234,240,248,.62); font-size:12px}
+.footer__sep{opacity:.6}
+
+/* Mobile catalog adjustments */
+@media (max-width: 768px) {
+    .catalog {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+    .catalog-item {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 20px;
+    }
+    .catalog-item img {
+        width: 100%;
+        height: auto;
+    }
+    .catalog-item .price, .catalog-item .stock {
+        font-size: 14px;
+        text-align: center;
+    }
+    .catalog-item .btn {
+        width: 100%;
+    }
+}
+.btn{
+  display:inline-flex; align-items:center; gap:10px; justify-content:center;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 14px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+  color: var(--text);
+  transition: transform .15s var(--ease), background .15s var(--ease), border-color .15s var(--ease), box-shadow .15s var(--ease);
+  user-select:none;
+}
+.btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.18)}
+.btn:active{transform: translateY(0)}
+.btn--primary{
+  background: linear-gradient(135deg, rgba(229,57,84,1), rgba(255,122,144,.85));
+  border-color: rgba(255,122,144,.32);
+  box-shadow: 0 18px 44px rgba(229,57,84,.26);
+}
+.btn--primary:hover{box-shadow: 0 22px 56px rgba(229,57,84,.30)}
+.btn--ghost{background: rgba(255,255,255,.03)}
+.btn--sm{padding: 8px 12px; font-size: 13px}
+.btn--lg{padding: 12px 18px; font-size: 15px}
+
+.city{position:relative}
+.city__btn{
+  display:inline-flex; align-items:center; gap:10px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10);
+  color: rgba(234,240,248,.92);
+  cursor:pointer;
+}
+.city__label{font-size:12px; color: rgba(234,240,248,.62)}
+.city__value{font-weight:800}
+.chev{
+  width:10px; height:10px; border-right:2px solid rgba(234,240,248,.85); border-bottom:2px solid rgba(234,240,248,.85);
+  transform: rotate(45deg);
+  margin-left: 2px;
+}
+.city__menu{
+  position:absolute; right:0; top: calc(100% + 10px);
+  min-width: 220px;
+  padding: 8px;
+  border-radius: 18px;
+  background: rgba(12,16,22,.92);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow: 0 26px 70px rgba(0,0,0,.55);
+  backdrop-filter: blur(16px);
+  display:none;
+}
+.city__menu[data-open="true"]{display:block}
+.city__opt{
+  width:100%;
+  text-align:left;
+  padding: 10px 10px;
+  border-radius: 14px;
+  border:1px solid transparent;
+  background: transparent;
+  color: rgba(234,240,248,.85);
+  cursor:pointer;
+}
+.city__opt:hover{
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.10);
 }
 
-.promo{
-  background: var(--card);
-  border:1px solid var(--stroke);
-  border-radius:var(--radius2);
+.cat{
+  display:flex; align-items:center; justify-content:space-between; gap: 12px;
+  padding: 16px 16px;
+  border-radius: var(--radius2);
+  background: rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10);
+  transition: transform .16s var(--ease), background .16s var(--ease), border-color .16s var(--ease);
+  position:relative;
   overflow:hidden;
-  transition: all .3s var(--ease);
+}
+.cat:hover{transform: translateY(-2px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.16)}
+.cat__icon{
+  width:46px; height:46px;
+  border-radius: 16px;
+  display:grid; place-items:center;
+  background: rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+  font-size:22px;
+}
+.cat__title{font-weight:900; letter-spacing:-.01em}
+.cat__sub{font-size:12px; color: rgba(234,240,248,.62); margin-top:2px}
+.cat__arrow{
+  width:34px; height:34px; border-radius: 14px;
+  background: rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
   position:relative;
 }
-.promo:hover{
-  transform: translateY(-4px);
-  box-shadow: var(--shadow);
-  border-color: var(--stroke2);
+.cat__arrow:before{
+  content:"";
+  position:absolute; inset:0;
+  margin:auto;
+  width:10px; height:10px;
+  border-right:2px solid rgba(234,240,248,.9);
+  border-top:2px solid rgba(234,240,248,.9);
+  transform: rotate(45deg);
 }
-.promo__badge{
-  position:absolute;
-  top:20px; right:20px;
-  padding:8px 16px;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  color:#fff;
-  border-radius:999px;
-  font-size:13px;
-  font-weight:700;
-  z-index:2;
-  box-shadow: 0 8px 20px rgba(229,57,84,.35);
-}
-.promo__img{
-  width:100%;
-  aspect-ratio: 16/10;
-  object-fit:cover;
-}
-.promo__body{
-  padding:24px;
-}
-.promo__title{
-  font-size:22px;
-  font-weight:600;
-  margin-bottom:12px;
-  color: var(--text);
-}
-.promo__desc{
-  font-size:14px;
-  color: var(--muted);
-  line-height:1.6;
-  margin-bottom:16px;
-}
-.promo__price{
-  display:flex;
-  align-items:baseline;
-  gap:12px;
-  margin-bottom:20px;
-}
-.promo__price-old{
-  font-size:18px;
-  color: var(--muted2);
-  text-decoration: line-through;
-}
-.promo__price-new{
-  font-size:28px;
-  font-weight:700;
-  color: var(--good);
-}
-.promo__cta{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:100%;
-  padding:14px 28px;
-  border-radius:999px;
-  font-size:14px;
-  font-weight:600;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  color: #fff;
-  border:0;
-  cursor:pointer;
-  transition: all .25s var(--ease);
-  box-shadow: 0 12px 28px rgba(229,57,84,.35);
-}
-.promo__cta:hover{
-  box-shadow: 0 16px 38px rgba(229,57,84,.45);
-  transform: translateY(-2px);
+.cat--accent{
+  background: linear-gradient(135deg, rgba(229,57,84,.18), rgba(255,255,255,.04));
+  border-color: rgba(229,57,84,.22);
 }
 
-.footer{
-  padding:60px 0 40px;
-  border-top:1px solid var(--stroke);
-  margin-top:80px;
-}
-.footer__grid{
+.rail{
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap:40px;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(240px, 1fr);
+  gap: 12px;
+  overflow:auto;
+  padding-bottom: 6px;
+  scroll-snap-type: x mandatory;
 }
-.footer__col h3{
-  font-size:16px;
-  margin-bottom:16px;
-  color: var(--text);
+.rail::-webkit-scrollbar{height:8px}
+.rail::-webkit-scrollbar-thumb{background: rgba(255,255,255,.16); border-radius:999px}
+.card{
+  scroll-snap-align: start;
+  border-radius: var(--radius2);
+  background: rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10);
+  overflow:hidden;
+  transition: transform .16s var(--ease), border-color .16s var(--ease);
 }
-.footer__col a{
+.card:hover{transform: translateY(-2px); border-color: rgba(255,255,255,.18)}
+.card__img{height:150px; position:relative}
+.card__meta{padding: 14px 14px 10px}
+.card__title{font-weight:900}
+.card__sub{font-size:12px; color: rgba(234,240,248,.62); margin-top:4px}
+.card__cta{display:flex; align-items:center; justify-content:space-between; gap:10px; padding: 0 14px 14px}
+.pill{
+  font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
+  padding: 7px 10px; border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+  color: rgba(234,240,248,.78);
+}
+
+.step{
+  padding: 16px 16px;
+  border-radius: var(--radius2);
+  background: rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10);
+}
+.step__n{
+  font-weight:900;
+  letter-spacing:-.02em;
+  color: rgba(255,122,144,.92);
+}
+.step__t{margin-top:6px; font-weight:900}
+.step__d{margin-top:6px; color: rgba(234,240,248,.62); font-size:13px; line-height:1.5}
+
+.citycard{
+  padding: 16px 16px;
+  border-radius: var(--radius2);
+  background: rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10);
+  transition: transform .16s var(--ease), border-color .16s var(--ease);
+}
+.citycard:hover{transform: translateY(-2px); border-color: rgba(255,255,255,.18)}
+.citycard__title{font-weight:900}
+.citycard__sub{margin-top:4px; color: rgba(234,240,248,.62); font-size:12px}
+
+.recipe{
+  border-radius: var(--radius2);
+  overflow:hidden;
+  background: rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10);
+  transition: transform .16s var(--ease), border-color .16s var(--ease);
+}
+.recipe:hover{transform: translateY(-2px); border-color: rgba(255,255,255,.18)}
+.recipe__img{height:170px; position:relative}
+.recipe__body{padding: 14px 14px 16px}
+.recipe__title{font-weight:900}
+.recipe__sub{margin-top:4px; color: rgba(234,240,248,.62); font-size:12px}
+
+.cta{
+  margin-top: 18px;
+  position:relative;
+  border-radius: calc(var(--radius2) + 6px);
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  overflow:hidden;
+  padding: 18px;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+}
+.cta__bg{
+  position:absolute; inset:-80px -120px -80px -120px;
+  background:
+    radial-gradient(520px 260px at 18% 30%, rgba(229,57,84,.28), transparent 60%),
+    radial-gradient(520px 260px at 85% 20%, rgba(106,217,255,.18), transparent 62%);
+  filter: blur(0px);
+  pointer-events:none;
+}
+.cta__copy{position:relative}
+.cta__title{font-weight:1000; font-size: 18px}
+.cta__sub{margin-top:6px; color: rgba(234,240,248,.62); font-size:13px}
+.cta__actions{position:relative; display:flex; gap:10px; flex-wrap:wrap}
+@media (max-width: 760px){
+  .cta{flex-direction:column; align-items:flex-start}
+}
+
+.ph{position:absolute; inset:0;
+  background:
+    radial-gradient(220px 140px at 35% 35%, rgba(255,255,255,.16), transparent 60%),
+    radial-gradient(200px 150px at 70% 70%, rgba(255,255,255,.10), transparent 65%),
+    linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+}
+.ph--1{background:
+  radial-gradient(260px 160px at 35% 30%, rgba(229,57,84,.22), transparent 62%),
+  radial-gradient(220px 160px at 70% 70%, rgba(255,255,255,.14), transparent 65%),
+  linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+}
+.ph--2{background:
+  radial-gradient(260px 160px at 35% 30%, rgba(106,217,255,.22), transparent 62%),
+  radial-gradient(220px 160px at 70% 70%, rgba(255,255,255,.14), transparent 65%),
+  linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+}
+.ph--3{background:
+  radial-gradient(260px 160px at 35% 30%, rgba(72,224,165,.20), transparent 62%),
+  radial-gradient(220px 160px at 70% 70%, rgba(255,255,255,.14), transparent 65%),
+  linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+}
+.ph--4{background:
+  radial-gradient(520px 220px at 25% 40%, rgba(229,57,84,.18), transparent 64%),
+  radial-gradient(420px 220px at 85% 40%, rgba(106,217,255,.14), transparent 66%),
+  linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+}
+.ph--p1{background: radial-gradient(240px 160px at 35% 35%, rgba(229,57,84,.22), transparent 62%), linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));}
+.ph--p2{background: radial-gradient(240px 160px at 35% 35%, rgba(106,217,255,.20), transparent 62%), linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));}
+.ph--p3{background: radial-gradient(240px 160px at 35% 35%, rgba(72,224,165,.18), transparent 62%), linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));}
+.ph--p4{background: radial-gradient(240px 160px at 35% 35%, rgba(255,122,144,.18), transparent 62%), linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));}
+.ph--r1{background: radial-gradient(240px 160px at 35% 35%, rgba(229,57,84,.18), transparent 62%), linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));}
+.ph--r2{background: radial-gradient(240px 160px at 35% 35%, rgba(106,217,255,.16), transparent 62%), linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));}
+.ph--r3{background: radial-gradient(240px 160px at 35% 35%, rgba(72,224,165,.14), transparent 62%), linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));}
+
+.topbar--solid{
+  background: linear-gradient(180deg, rgba(7,10,14,.88), rgba(7,10,14,.55));
+  border-bottom: 1px solid var(--stroke);
+  backdrop-filter: blur(12px);
+}
+.nav{display:flex; align-items:center; gap:16px;}
+.nav__link{
+  position:relative;
+  display:inline-flex; align-items:center; gap:8px;
+  padding:10px 10px;
+  border-radius:999px;
+  color: var(--muted);
+  font-weight:800;
+  font-size:13px;
+  letter-spacing:.2px;
+}
+.nav__link:hover{color:var(--text); background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.06);}
+.nav__link--active{color:var(--text); background: rgba(229,57,84,.16); border:1px solid rgba(229,57,84,.25);}
+.nav__link--btn{background:transparent; border:1px solid transparent; cursor:pointer;}
+.nav__dropdown{position:relative;}
+.dd{
+  position:absolute; top: calc(100% + 10px); left: 0;
+  min-width: 190px;
+  padding: 8px;
+  border-radius: 16px;
+  border:1px solid var(--stroke);
+  background: rgba(11,15,20,.92);
+  box-shadow: var(--shadow);
+  display:none;
+}
+.dd--open{display:block;}
+.dd__item{
   display:block;
-  padding:8px 0;
-  font-size:14px;
+  padding:10px 12px;
+  border-radius: 12px;
+  color: var(--muted);
+  font-weight:700;
+  font-size: 13px;
+}
+.dd__item:hover{color:var(--text); background: rgba(255,255,255,.05);}
+
+.topbar__phone{
+  color: var(--text);
+  font-weight:900;
+  padding:10px 12px;
+  border-radius:999px;
+  border:1px solid var(--stroke);
+  background: rgba(255,255,255,.03);
+}
+.topbar__phone:hover{border-color: rgba(255,255,255,.18); background: rgba(255,255,255,.05);}
+.topbar__soc{display:flex; gap:8px; margin-left:8px;}
+.soc{color:var(--muted); font-weight:800; font-size:12px; padding:8px 10px; border-radius:999px; border:1px solid transparent;}
+.soc:hover{color:var(--text); background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.08);}
+
+.burger{
+  display:none;
+  width:44px; height:44px;
+  border-radius: 12px;
+  border:1px solid var(--stroke);
+  background: rgba(255,255,255,.03);
+  padding:10px;
+}
+.burger span{display:block; height:2px; background: var(--text); border-radius:2px; margin:5px 0; opacity:.9;}
+.mnav{
+  display:none;
+  position:fixed; inset:0;
+  background: rgba(0,0,0,.55);
+  z-index: 60;
+}
+.mnav__inner{
+  margin: 72px auto 0 auto;
+  border-radius: 18px;
+  border:1px solid var(--stroke);
+  background: rgba(11,15,20,.96);
+  box-shadow: var(--shadow);
+  padding: 16px;
+}
+.mnav__link{display:block; padding:12px 12px; border-radius: 14px; color: var(--text); font-weight:900;}
+.mnav__link:hover{background: rgba(255,255,255,.05);}
+.mnav__group{margin-top:10px; padding-top:10px; border-top:1px solid var(--stroke);}
+.mnav__title{color:var(--muted2); font-weight:800; font-size:12px; padding:6px 12px;}
+.mnav__soc{display:flex; gap:10px; padding:10px 12px;}
+.mnav--open{display:block;}
+.no-scroll{overflow:hidden;}
+
+.page{min-height: 70vh;}
+.hero--compact{padding: 64px 0 28px 0;}
+.hero__media--promo{align-self:stretch;}
+.pill{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.03); color: var(--muted); font-weight:900; font-size:12px;}
+.lead{font-size:16px; color: var(--muted); line-height:1.6; margin-top: 14px;}
+.cta{display:flex; gap:12px; flex-wrap:wrap; margin-top: 18px;}
+.dot{width:8px; height:8px; border-radius:999px; display:inline-block; background: rgba(255,255,255,.28);}
+.dot--good{background: var(--good);}
+.trust{display:flex; gap:14px; flex-wrap:wrap; margin-top: 16px;}
+.trust__item{display:flex; gap:10px; align-items:center; color: var(--muted2); font-weight:800; font-size:12px;}
+
+.section--split{background: radial-gradient(900px 300px at 20% 20%, rgba(229,57,84,.10), transparent 60%);}
+.split{display:grid; grid-template-columns: 1.1fr .9fr; gap:24px; align-items:center;}
+.promoList{border:1px solid var(--stroke); border-radius:18px; background: rgba(255,255,255,.03); padding:14px;}
+.promoLine{display:flex; align-items:center; gap:12px; padding:10px 10px; border-radius:14px;}
+.promoLine:hover{background: rgba(255,255,255,.04);}
+
+.cityCards{display:grid; grid-template-columns: repeat(3,1fr); gap:16px;}
+.cityCard{
+  display:block;
+  border:1px solid var(--stroke);
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border-radius: 20px;
+  padding: 18px;
+  box-shadow: 0 20px 50px rgba(0,0,0,.35);
+}
+.cityCard:hover{border-color: rgba(255,255,255,.18); transform: translateY(-2px);}
+.cityCard__kicker{color: var(--muted2); font-weight:900; font-size:12px;}
+.cityCard__title{margin-top:6px; font-size:20px; font-weight: 950; letter-spacing: -.3px; color: var(--text);}
+.cityCard__muted{margin-top:6px; color: var(--muted); font-weight:700; font-size:13px;}
+
+.promoGrid{display:grid; grid-template-columns: repeat(2,1fr); gap:14px;}
+.promoCard{border:1px solid var(--stroke); background: rgba(255,255,255,.03); border-radius:18px; padding:14px;}
+.promoCard__kicker{display:inline-flex; padding:6px 10px; border-radius:999px; background: rgba(229,57,84,.18); border:1px solid rgba(229,57,84,.25); color: var(--text); font-weight:900; font-size:12px;}
+.promoCard__title{margin-top:10px; font-size:16px; font-weight:950; color: var(--text);}
+.promoCard__muted{margin-top:6px; color: var(--muted); font-weight:700; font-size:13px;}
+.note{margin-top:14px; color: var(--muted2); font-weight:700; font-size:12px; line-height:1.5;}
+.note--small{max-width: 44ch;}
+
+.steps{display:grid; grid-template-columns: repeat(3,1fr); gap:14px;}
+.step{display:flex; gap:12px; border:1px solid var(--stroke); background: rgba(255,255,255,.03); border-radius:18px; padding:14px;}
+.step__n{width:34px; height:34px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-weight:950; background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.09);}
+.step__t{font-weight:950; color:var(--text);}
+
+.catalog{display:grid; grid-template-columns: 320px 1fr; gap:18px; align-items:start;}
+.filters{position:sticky; top: 94px; border:1px solid var(--stroke); background: rgba(255,255,255,.03); border-radius: 20px; padding: 14px;}
+.filters__title{font-weight:950; margin-bottom:10px;}
+.frow{display:grid; gap:8px; margin-top:12px; color: var(--muted2); font-weight:800; font-size:12px;}
+.input,.select{width:100%; padding:10px 12px; border-radius: 14px; border:1px solid rgba(255,255,255,.10); background: rgba(0,0,0,.12); color: var(--text); outline:none;}
+.input::placeholder{color: rgba(234,240,248,.45);}
+.range input{width:100%;}
+.filters__cta{display:grid; gap:10px; margin-top:14px;}
+.btn--block{width:100%;}
+.grid{display:grid; grid-template-columns: repeat(3,1fr); gap:14px;}
+.grid--recipes{grid-template-columns: repeat(3,1fr);}
+
+.pCard{border:1px solid var(--stroke); background: rgba(255,255,255,.03); border-radius: 20px; overflow:hidden;}
+.pCard__img{height: 132px; background: radial-gradient(280px 120px at 30% 25%, rgba(229,57,84,.28), transparent 60%), linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.08)); border-bottom:1px solid rgba(255,255,255,.08);}
+.pCard__body{padding: 12px 12px 14px 12px;}
+.pCard__top{display:flex; gap:10px; align-items:center; justify-content:space-between;}
+.pCard__title{font-weight:950; color:var(--text); letter-spacing:-.2px;}
+.badge{display:inline-flex; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); color: var(--muted); font-weight:900; font-size:11px;}
+.pCard__muted{margin-top:8px; color: var(--muted); font-weight:700; font-size:13px; line-height:1.4;}
+.pCard__bottom{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top: 12px;}
+.price{color: var(--muted2); font-weight:800; font-size:12px;}
+.price span{color: var(--text); font-weight:950;}
+.btn--mini{padding:8px 10px; border-radius: 999px; font-size:12px;}
+.btn--mini.btn--ghost{border-color: rgba(255,255,255,.14);}
+
+.rCard{border:1px solid var(--stroke); background: rgba(255,255,255,.03); border-radius: 20px; overflow:hidden;}
+.rCard__img{height: 140px; background: radial-gradient(280px 140px at 35% 35%, rgba(255,255,255,.10), transparent 60%), linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.08)); border-bottom:1px solid rgba(255,255,255,.08);}
+.rCard__body{padding: 12px 12px 14px 12px;}
+.rCard__meta{color: var(--muted2); font-weight:900; font-size:12px;}
+.rCard__title{margin-top:6px; font-weight:950; letter-spacing:-.2px;}
+.rCard__muted{margin-top:8px; color: var(--muted); font-weight:700; font-size:13px; line-height:1.4;}
+.rCard__bottom{display:flex; gap:10px; margin-top: 12px;}
+
+.footer{margin-top: 42px; border-top:1px solid var(--stroke); background: rgba(0,0,0,.20);}
+.footer__grid{display:grid; grid-template-columns: 1.4fr 1fr 1fr; gap:18px; padding: 22px 0;}
+.footer__brand{font-weight:950; font-size:16px;}
+.footer__title{color: var(--muted2); font-weight:900; font-size:12px; margin-bottom: 10px;}
+.footer__link{display:block; color: var(--muted); font-weight:800; font-size:13px; padding:6px 0;}
+.footer__link:hover{color: var(--text);}
+.footer__muted{color: var(--muted2); font-weight:700; font-size:12px; line-height:1.5;}
+.footer__bottom{display:flex; justify-content:space-between; align-items:center; padding: 14px 0 22px 0; border-top:1px solid rgba(255,255,255,.06);}
+
+@media (max-width: 1060px){
+  .nav{display:none;}
+  .burger{display:inline-block;}
+  .topbar__soc{display:none;}
+  .catalog{grid-template-columns: 1fr;}
+  .filters{position:relative; top:auto;}
+  .grid{grid-template-columns: repeat(2,1fr);}
+  .grid--recipes{grid-template-columns: repeat(2,1fr);}
+  .cityCards{grid-template-columns: 1fr;}
+  .split{grid-template-columns:1fr;}
+  .steps{grid-template-columns:1fr;}
+}
+@media (max-width: 560px){
+  .grid{grid-template-columns:1fr;}
+  .grid--recipes{grid-template-columns:1fr;}
+  .promoGrid{grid-template-columns:1fr;}
+}
+
+
+/* Cart button + drawer */
+.cartbtn{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid var(--stroke);
+  background: rgba(255,255,255,.04);
+  color:var(--text);
+  text-decoration:none;
+  box-shadow: 0 16px 40px rgba(0,0,0,.35);
+}
+.cartbtn:hover{background: rgba(255,255,255,.06); border-color: var(--stroke2);}
+.cartbtn__count{
+  min-width:22px; height:22px;
+  display:grid; place-items:center;
+  padding:0 6px;
+  border-radius:999px;
+  background: rgba(229,57,84,.18);
+  border:1px solid rgba(229,57,84,.35);
+  color: var(--text);
+  font-size:12px;
+}
+
+.drawer{
+  position:fixed; top:0; right:0; height:100%; width:min(420px, 92vw);
+  background: rgba(9,12,16,.94);
+  border-left: 1px solid var(--stroke);
+  box-shadow: -20px 0 60px rgba(0,0,0,.55);
+  z-index: 90;
+  transform: translateX(110%);
+  transition: transform .26s ease;
+  display:flex; flex-direction:column;
+}
+.drawer.is-open{transform: translateX(0);}
+.drawer__head{
+  padding:18px 18px 12px;
+  display:flex; align-items:center; justify-content:space-between;
+  border-bottom:1px solid var(--stroke);
+}
+.drawer__title{font-weight:800; letter-spacing:.2px}
+.drawer__close{
+  border:1px solid var(--stroke);
+  background: rgba(255,255,255,.04);
+  color:var(--text);
+  border-radius:12px;
+  padding:8px 10px;
+  cursor:pointer;
+}
+.drawer__body{padding:14px 18px; overflow:auto; display:flex; flex-direction:column; gap:12px}
+.cartrow{
+  display:grid;
+  grid-template-columns: 52px 1fr auto;
+  gap:12px;
+  padding:12px;
+  border:1px solid var(--stroke);
+  border-radius: 16px;
+  background: rgba(255,255,255,.04);
+}
+.cartrow__img{
+  width:52px; height:52px; border-radius: 14px;
+  background: linear-gradient(135deg, rgba(229,57,84,.28), rgba(255,255,255,.06));
+  border:1px solid rgba(255,255,255,.08);
+}
+.cartrow__name{font-weight:750; line-height:1.2}
+.cartrow__meta{color:var(--muted2); font-size:13px; margin-top:4px}
+.qty{
+  display:inline-flex; align-items:center; gap:8px;
+  border:1px solid var(--stroke);
+  border-radius: 999px;
+  padding:6px 8px;
+  background: rgba(255,255,255,.02);
+}
+.qty button{
+  width:28px; height:28px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  color:var(--text);
+  cursor:pointer;
+}
+.qty input{
+  width:42px;
+  text-align:center;
+  border:0;
+  background: transparent;
+  color:var(--text);
+  font-weight:700;
+}
+.drawer__foot{
+  padding:14px 18px;
+  border-top:1px solid var(--stroke);
+  display:flex; flex-direction:column; gap:10px;
+}
+.total{
+  display:flex; justify-content:space-between; align-items:center;
+  color:var(--muted);
+}
+.total strong{color:var(--text); font-size:18px}
+.btn-primary{
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:10px;
+  padding:12px 14px;
+  border-radius: 14px;
+  border:1px solid rgba(229,57,84,.45);
+  background: linear-gradient(90deg, rgba(229,57,84,.92), rgba(255,122,144,.78));
+  color:#0b0f14;
+  font-weight:850;
+  text-decoration:none;
+  cursor:pointer;
+}
+.btn-primary:hover{filter: brightness(1.04);}
+.btn-ghost{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:12px 14px;
+  border-radius: 14px;
+  border:1px solid var(--stroke);
+  background: rgba(255,255,255,.04);
+  color:var(--text);
+  font-weight:800;
+  text-decoration:none;
+  cursor:pointer;
+}
+.btn-ghost:hover{background: rgba(255,255,255,.06); border-color: var(--stroke2);}
+
+/* Catalog filters */
+.filters{
+  display:flex; flex-wrap:wrap; gap:10px;
+  align-items:center;
+  padding:12px;
+  border:1px solid var(--stroke);
+  border-radius: 18px;
+  background: rgba(255,255,255,.03);
+}
+.field{
+  display:flex; align-items:center; gap:10px;
+  padding:10px 12px;
+  border-radius: 14px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.18);
+}
+.field input, .field select{
+  border:0; outline:none;
+  background: transparent;
+  color: var(--text);
+  font-weight:650;
+}
+.field input::placeholder{color: rgba(234,240,248,.45);}
+.pill{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:10px 12px;
+  border-radius: 999px;
+  border:1px solid var(--stroke);
+  background: rgba(255,255,255,.04);
+  cursor:pointer;
+  user-select:none;
+}
+.pill input{accent-color: var(--accent);}
+.pill span{color:var(--muted); font-weight:700}
+
+/* Product page */
+.product{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap:18px;
+}
+@media (max-width: 980px){
+  .product{grid-template-columns:1fr}
+}
+.product__media{
+  border:1px solid var(--stroke);
+  border-radius: 22px;
+  background: rgba(255,255,255,.03);
+  padding:14px;
+}
+.product__img{
+  height: 360px;
+  border-radius: 18px;
+  border:1px solid rgba(255,255,255,.10);
+  background: radial-gradient(circle at 30% 20%, rgba(229,57,84,.28), transparent 55%),
+              linear-gradient(135deg, rgba(255,255,255,.08), rgba(0,0,0,.12));
+}
+.product__panel{
+  border:1px solid var(--stroke);
+  border-radius: 22px;
+  background: rgba(255,255,255,.03);
+  padding:16px;
+  display:flex; flex-direction:column; gap:12px;
+}
+.kv{display:flex; justify-content:space-between; color:var(--muted); font-weight:650}
+.kv strong{color:var(--text)}
+.warehouse{
+  display:flex; justify-content:space-between;
+  padding:10px 12px;
+  border-radius: 14px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.18);
   color: var(--muted);
 }
-.footer__col a:hover{
-  color: var(--text);
+.warehouse b{color:var(--text)}
+.modal__title{font-size:20px; font-weight:900; margin:0}
+.modal__text{color:var(--muted); margin:10px 0 14px}
+.modal__actions{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+.modal__row{display:flex; gap:10px; flex-wrap:wrap}
+.modal__select{
+  flex:1;
+  padding:10px 12px;
+  border-radius: 14px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.18);
+  color:var(--text);
+  font-weight:700;
 }
-.footer__bottom{
-  margin-top:40px;
-  padding-top:20px;
-  border-top:1px solid var(--stroke);
-  text-align:center;
-  font-size:13px;
-  color: var(--muted2);
-}
-
-@media (max-width: 760px){
-  .nav{display:none}
-  .topbar__right .phone{display:none}
-  .promo-grid{grid-template-columns:1fr}
-}
-  </style>
+</style>
 </head>
-<body>
+<body class="t">
 
-<header class="topbar">
+<header class="topbar topbar--solid">
   <div class="container topbar__inner">
     <a class="brand" href="index.html">
-      <span class="brand__mark"></span>
+      <span aria-hidden="true" class="brand__mark"></span>
       <span class="brand__text">
         <span class="brand__name">IkraDaKrab</span>
         <span class="brand__tag">морепродукты премиум‑класса</span>
       </span>
     </a>
 
-    <nav class="nav">
+    <nav class="nav" aria-label="Навигация">
+      
       <a class="nav__link" href="index.html">Главная</a>
       <a class="nav__link nav__link--active" href="action.html">Акции</a>
-      <a class="nav__link" href="catalog.html">Каталог</a>
+      <a class="nav__link" href="catalog-tyumen.html" data-city-href="catalog">Каталог</a>
       <a class="nav__link" href="recipes.html">Рецепты</a>
+    
     </nav>
 
     <div class="topbar__right">
-      <a class="phone" href="tel:+79923116970">+7 (992) 311-69-70</a>
-      <a class="soc" href="https://t.me/ikraDAkrab" target="_blank">Telegram</a>
-      <a class="soc" href="https://vk.com/ikradacrab" target="_blank">VK</a>
+      
+      
+      <button class="cartbtn" type="button" data-cart-open aria-label="Открыть корзину">Корзина <span class="cartbtn__count" data-cart-count>0</span></button>
+      <div class="city" data-city>
+        <button class="city__btn" type="button" aria-haspopup="true" aria-expanded="false" data-city-btn>
+          <span>
+            <span class="city__label">Город</span>
+            <span class="city__value" data-city-value>Тюмень</span>
+          </span>
+          <span class="chev" aria-hidden="true"></span>
+        </button>
+        <div class="city__menu" role="menu" aria-label="Выбор города" data-city-menu>
+          <button class="city__opt" type="button" role="menuitem" data-city-set="tyumen">Тюмень</button>
+          <button class="city__opt" type="button" role="menuitem" data-city-set="nu">Новый Уренгой</button>
+          <button class="city__opt" type="button" role="menuitem" data-city-set="nadym">Надым</button>
+        </div>
+      </div>
+<a class="phone" href="tel:+79923116970">+7 (992) 311-69-70</a>
+      <div class="topbar__soc">
+        <a class="soc" href="https://t.me/ikraDAkrab" target="_blank" rel="noopener">Telegram</a>
+        <a class="soc" href="https://vk.com/ikradacrab" target="_blank" rel="noopener">VK</a>
+      </div>
+      <button class="burger" type="button" aria-label="Открыть меню" data-burger>
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile" data-mnav>
+    <div class="mobile__inner container">
+      <a class="mobile__link" href="index.html">Главная</a>
+      <a class="mobile__link" href="action.html">Акции</a>
+      <div class="mobile__group">
+        <div class="mobile__title">Сделать заказ</div>
+        <a class="mobile__link" href="catalog-tyumen.html">в г. Тюмень</a>
+        <a class="mobile__link" href="catalog-nu.html">в г. Новый Уренгой</a>
+        <a class="mobile__link" href="catalog-nadym.html">в г. Надым</a>
+      </div>
+      <a class="mobile__link" href="recipes.html">Рецепты</a>
+      <a class="mobile__link" href="tel:+79923116970">+7 (992) 311-69-70</a>
+      <div class="mobile__soc">
+        <a class="soc" href="https://t.me/ikraDAkrab" target="_blank" rel="noopener">Telegram</a>
+        <a class="soc" href="https://vk.com/ikradacrab" target="_blank" rel="noopener">VK</a>
+      </div>
     </div>
   </div>
 </header>
 
-<main>
-  <section class="page-hero">
-    <div class="container">
-      <h1 class="h1">Актуальные акции и специальные предложения</h1>
-      <p class="lead" style="max-width:none">Выгодные предложения на морепродукты премиум-класса. Успейте воспользоваться нашими акциями!</p>
+<main class="page">
+  <section class="hero hero--compact">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <div class="pill">Акции и товары недели</div>
+        <h1 class="h1">Актуальные акции</h1>
+        <p class="lead">Свежие акции и товары недели в IkraDaKrab: скидки на красную и черную икру, крабов, креветки, рыбу и другие морепродукты премиум-класса. Выгодные предложения в Тюмени, Новом Уренгое и Надыме, доставка и самовывоз</p>
+        <div class="cta">
+          <a class="btn btn--primary" href="catalog-tyumen.html" data-city-href="catalog">Заказать в Тюмени</a>
+          <a class="btn btn--ghost" href="https://t.me/ikraDAkrab" target="_blank" rel="noopener">Написать в Telegram</a>
+        </div>
+      </div>
+      <div class="hero__media hero__media--promo">
+        <div class="promoGrid">
+          <div class="promoCard">
+            <div class="promoCard__kicker">-15%</div>
+            <div class="promoCard__title">Икра красная</div>
+            <div class="promoCard__muted">Ограниченное предложение</div>
+          </div>
+          <div class="promoCard">
+            <div class="promoCard__kicker">Хит</div>
+            <div class="promoCard__title">Камчатский краб</div>
+            <div class="promoCard__muted">Премиум качество</div>
+          </div>
+          <div class="promoCard">
+            <div class="promoCard__kicker">Товар недели</div>
+            <div class="promoCard__title">Креветки</div>
+            <div class="promoCard__muted">Свежая поставка</div>
+          </div>
+          <div class="promoCard">
+            <div class="promoCard__kicker">-10%</div>
+            <div class="promoCard__title">Стейки рыбы</div>
+            <div class="promoCard__muted">Идеально для гриля</div>
+          </div>
+        </div>
+        <div class="note note--small">Демо‑карточки: структура страницы. Тексты не удалялись.</div>
+      </div>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <div class="promo-grid">
-        
-        <div class="promo">
-          <span class="promo__badge">-25%</span>
-          <img class="promo__img" src="https://optim.tildacdn.com/tild6166-3737-4037-b161-613165616261/-/cover/600x600/center/center/-/format/webp/IMG_9231.PNG.webp" alt="Красная икра">
-          <div class="promo__body">
-            <h3 class="promo__title">Красная икра горбуши</h3>
-            <p class="promo__desc">Икра горбуши премиум качества. Зернистая, с насыщенным вкусом. Идеально подходит для праздничного стола.</p>
-            <div class="promo__price">
-              <span class="promo__price-old">3 200 ₽</span>
-              <span class="promo__price-new">2 400 ₽</span>
-            </div>
-            <button class="promo__cta">Заказать со скидкой</button>
-          </div>
-        </div>
-
-        <div class="promo">
-          <span class="promo__badge">-30%</span>
-          <img class="promo__img" src="https://static.tildacdn.com/tild6336-3836-4366-b631-313530623364/DSC_8339.jpg" alt="Камчатский краб">
-          <div class="promo__body">
-            <h3 class="promo__title">Камчатский краб</h3>
-            <p class="promo__desc">Свежемороженый камчатский краб высшего качества. Нежное мясо с деликатным вкусом.</p>
-            <div class="promo__price">
-              <span class="promo__price-old">8 500 ₽</span>
-              <span class="promo__price-new">5 950 ₽</span>
-            </div>
-            <button class="promo__cta">Заказать со скидкой</button>
-          </div>
-        </div>
-
-        <div class="promo">
-          <span class="promo__badge">-20%</span>
-          <img class="promo__img" src="https://static.tildacdn.com/tild6539-3835-4833-a339-323061383964/DSC_8404.jpg" alt="Королевские креветки">
-          <div class="promo__body">
-            <h3 class="promo__title">Королевские креветки</h3>
-            <p class="promo__desc">Крупные креветки премиум качества. Идеальны для гриля и праздничных блюд.</p>
-            <div class="promo__price">
-              <span class="promo__price-old">2 500 ₽</span>
-              <span class="promo__price-new">2 000 ₽</span>
-            </div>
-            <button class="promo__cta">Заказать со скидкой</button>
-          </div>
-        </div>
-
-        <div class="promo">
-          <span class="promo__badge">-15%</span>
-          <img class="promo__img" src="https://static.tildacdn.com/tild3535-3162-4432-b465-386666393533/DSC_8432.jpg" alt="Мидии">
-          <div class="promo__body">
-            <h3 class="promo__title">Мидии в створках</h3>
-            <p class="promo__desc">Крупные мидии в створках. Отлично подходят для запекания с сыром и чесноком.</p>
-            <div class="promo__price">
-              <span class="promo__price-old">1 200 ₽</span>
-              <span class="promo__price-new">1 020 ₽</span>
-            </div>
-            <button class="promo__cta">Заказать со скидкой</button>
-          </div>
-        </div>
-
-        <div class="promo">
-          <span class="promo__badge">-20%</span>
-          <img class="promo__img" src="https://static.tildacdn.com/tild3637-3932-4464-a537-626134313533/DSC_8390.jpg" alt="Стейки лосося">
-          <div class="promo__body">
-            <h3 class="promo__title">Стейки лосося</h3>
-            <p class="promo__desc">Охлажденные стейки норвежского лосося. Сочное и нежное мясо с богатым вкусом.</p>
-            <div class="promo__price">
-              <span class="promo__price-old">1 800 ₽</span>
-              <span class="promo__price-new">1 440 ₽</span>
-            </div>
-            <button class="promo__cta">Заказать со скидкой</button>
-          </div>
-        </div>
-
-        <div class="promo">
-          <span class="promo__badge">-35%</span>
-          <img class="promo__img" src="https://static.tildacdn.com/tild3530-6165-4061-b164-663335643130/Frame_2131329383.png" alt="Черная икра">
-          <div class="promo__body">
-            <h3 class="promo__title">Осетровая икра</h3>
-            <p class="promo__desc">Черная икра осетра. Роскошный деликатес для истинных ценителей.</p>
-            <div class="promo__price">
-              <span class="promo__price-old">15 000 ₽</span>
-              <span class="promo__price-new">9 750 ₽</span>
-            </div>
-            <button class="promo__cta">Заказать со скидкой</button>
-          </div>
-        </div>
-
+      <div class="section__head">
+        <h2 class="h2">Как получить скидку</h2>
+        <p class="muted">Выберите город, напишите в Telegram или позвоните — менеджер подтвердит наличие и условия акции.</p>
       </div>
-    </div>
-  </section>
 
-  <section class="section" style="padding-top:0">
-    <div class="container" style="text-align:center">
-      <div style="background:var(--card); border:1px solid var(--stroke); border-radius:var(--radius2); padding:40px; max-width:700px; margin:0 auto">
-        <h2 class="h2">Как воспользоваться акцией?</h2>
-        <p class="lead" style="max-width:none">Просто свяжитесь с нами по телефону <a href="tel:+79923116970" style="color:var(--accent2); font-weight:600">+7 (992) 311-69-70</a> или через наши соцсети и укажите интересующий товар. Наши менеджеры оформят заказ со скидкой!</p>
-        <p style="font-size:14px; color:var(--muted2); margin-top:20px">* Акции действуют при наличии товара на складе. Количество товара по акции ограничено.</p>
+      <div class="steps">
+        <div class="step"><div class="step__n">1</div><div><div class="step__t">Выберите город</div><div class="muted">Тюмень / Новый Уренгой / Надым</div></div></div>
+        <div class="step"><div class="step__n">2</div><div><div class="step__t">Оформите заказ</div><div class="muted">В каталоге или в Telegram</div></div></div>
+        <div class="step"><div class="step__n">3</div><div><div class="step__t">Получите доставку</div><div class="muted">Или самовывоз</div></div></div>
       </div>
     </div>
   </section>
 </main>
 
 <footer class="footer">
-  <div class="container">
-    <div class="footer__grid">
-      <div class="footer__col">
-        <h3>Навигация</h3>
-        <a href="index.html">Главная</a>
-        <a href="action.html">Акции</a>
-        <a href="catalog.html">Каталог</a>
-        <a href="recipes.html">Рецепты</a>
-      </div>
-      <div class="footer__col">
-        <h3>Города</h3>
-        <a href="catalog-tyumen.html">Тюмень</a>
-        <a href="catalog-nu.html">Новый Уренгой</a>
-        <a href="catalog-nadym.html">Надым</a>
-      </div>
-      <div class="footer__col">
-        <h3>Контакты</h3>
-        <a href="tel:+79923116970">+7 (992) 311-69-70</a>
-        <a href="https://t.me/ikraDAkrab" target="_blank">Telegram</a>
-        <a href="https://vk.com/ikradacrab" target="_blank">VK</a>
-      </div>
+  <div class="container footer__grid">
+    <div>
+      <div class="footer__brand">IkraDaKrab</div>
+      <div class="footer__muted">Морепродукты премиум‑класса. Доставка и самовывоз: Тюмень, Новый Уренгой, Надым.</div>
     </div>
-    <div class="footer__bottom">
-      <p>© 2024 IkraDaKrab. Все права защищены.</p>
+    <div>
+      <div class="footer__title">Навигация</div>
+      <a class="footer__link" href="index.html">Главная</a>
+      <a class="footer__link" href="action.html">Акции</a>
+      <a class="footer__link" href="recipes.html">Рецепты</a>
+      <a class="footer__link" href="catalog-tyumen.html">Каталог — Тюмень</a>
+      <a class="footer__link" href="catalog-nu.html">Каталог — Новый Уренгой</a>
+      <a class="footer__link" href="catalog-nadym.html">Каталог — Надым</a>
+    </div>
+    <div>
+      <div class="footer__title">Контакты</div>
+      <a class="footer__link" href="tel:+79923116970">+7 (992) 311-69-70</a>
+      <a class="footer__link" href="https://t.me/ikraDAkrab" target="_blank" rel="noopener">Telegram</a>
+      <a class="footer__link" href="https://vk.com/ikradacrab" target="_blank" rel="noopener">VK</a>
     </div>
   </div>
+  <div class="container footer__bottom">
+    <div class="footer__muted">© 2026 IkraDaKrab. Все права защищены.</div>
+    <a class="footer__muted footer__link" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Наверх</a>
+  </div>
 </footer>
+<div class="backdrop hidden" data-cart-backdrop></div>
+<aside class="drawer" data-cart-drawer aria-label="Корзина">
+  <div class="drawer__head">
+    <div class="drawer__title">Корзина</div>
+    <button class="drawer__close" type="button" data-cart-close>Закрыть</button>
+  </div>
+  <div class="drawer__body" data-cart-list></div>
+  <div class="drawer__foot">
+    <div class="total"><span>Итого</span><strong data-cart-total>0 ₽</strong></div>
+    <a class="btn-primary" href="checkout.html">Оформить заказ</a>
+    <button class="btn-ghost" type="button" data-cart-close>Продолжить покупки</button>
+  </div>
+</aside>
+<div id="cityModal" class="modal hidden" aria-modal="true" role="dialog" aria-label="Выбор города">
+  <div class="backdrop"></div>
+  <div class="modal__panel">
+    <h2 class="modal__title">Вы в Тюмени?</h2>
+    <p class="modal__text">Выберите город, чтобы показывать актуальные товары и наличие на складах.</p>
+    <div class="modal__actions">
+      <button class="btn-primary" type="button" data-city-yes>Да, Тюмень</button>
+      <button class="btn-ghost" type="button" data-city-other>Выбрать другой</button>
+    </div>
+    <div class="modal__row hidden" data-city-panel-other style="margin-top:12px">
+      <select class="modal__select" data-city-select>
+        <option value="tyumen">Тюмень</option>
+        <option value="nu">Новый Уренгой</option>
+        <option value="nadym">Надым</option>
+      </select>
+      <button class="btn-primary" type="button" data-city-save>Сохранить</button>
+    </div>
+  </div>
+</div>
 
+<script src="js/store.js"></script>
+<script src="js/city.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/cart-ui.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
